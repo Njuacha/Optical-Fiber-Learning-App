@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.opticalfiberlearninggame.R
 import com.example.opticalfiberlearninggame.model.QuestionWithAnswers
 
-class MainActivityAdapter() : RecyclerView.Adapter<MainActivityAdapter.ViewHolder>(){
+class PracticeDetailFragmentAD() : RecyclerView.Adapter<PracticeDetailFragmentAD.ViewHolder>(){
 
     var questionAndAnswersList: List<QuestionWithAnswers> = ArrayList()
         set(value) {

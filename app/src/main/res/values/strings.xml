@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Optical Fiber Learning Game</string>
+    <string name="app_name">Optical Fiber</string>
+    <string name="tab_text_1">Theory</string>
+    <string name="tab_text_2">Practice</string>
 </resources>

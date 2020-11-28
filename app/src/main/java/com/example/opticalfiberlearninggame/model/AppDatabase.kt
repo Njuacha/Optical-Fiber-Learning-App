@@ -7,11 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import java.util.concurrent.Executors
 
-@Database(entities = [Answer::class, Question::class], version = 1)
+@Database(entities = [Topic::class, Answer::class, Question::class], version = 1)
 public abstract class AppDatabase : RoomDatabase() {
 
     abstract fun answerDao(): AnswerDao
     abstract fun questionDao(): QuestionDao
+    abstract fun topicDao(): TopicDao
 
 
 
@@ -32,8 +33,11 @@ public abstract class AppDatabase : RoomDatabase() {
                         // pre populate database
                         Executors.newSingleThreadExecutor().execute {
                             INSTANCE?.let {
+                                it.topicDao().deleteAll()
                                 it.questionDao().deleteAll()
                                 it.answerDao().deleteAll()
+
+                                it.topicDao().insertTopics(DataGenerator.getTopics())
                                 it.questionDao().insertQuestions(DataGenerator.getQuestions())
                                 it.answerDao().insertAnswers(DataGenerator.getAnswers())
                             }

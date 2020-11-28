@@ -6,8 +6,8 @@ import androidx.lifecycle.LiveData
 import com.example.opticalfiberlearninggame.Repository
 import com.example.opticalfiberlearninggame.model.QuestionWithAnswers
 
-class MainActivityVM(application: Application) : AndroidViewModel(application) {
+class PracticeDetailFragmentVM(application: Application) : AndroidViewModel(application) {
 
-    val questionWithAnswers: LiveData<List<QuestionWithAnswers>> = Repository.getQuestionsWithAnswers(application.applicationContext)
+    val questionWithAnswers = Repository.getQuestionsWithAnswers(application.applicationContext)
 
 }

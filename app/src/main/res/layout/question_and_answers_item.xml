@@ -1,127 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:background="?attr/colorButtonNormal">
+
     <TextView
         android:id="@+id/question_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        tools:text="1."/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1." />
+
     <TextView
         android:id="@+id/question"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/question_no"
-        app:layout_constraintTop_toTopOf="@id/question_no"
         android:textColor="@android:color/black"
-        tools:text="What is the meaning of true love? like try to think really deeply about this matter very well"/>
+        app:layout_constraintLeft_toRightOf="@id/question_no"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/question_no"
+        tools:text="What is the meaning of true love? like try to think really deeply about this matter very well" />
+
     <TextView
         android:id="@+id/answer_a_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/question"
+        android:text="a)"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="a)"/>
+        app:layout_constraintTop_toBottomOf="@id/question" />
+
     <TextView
         android:id="@+id/answer_a_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="@id/answer_a_label"
         app:layout_constraintLeft_toRightOf="@id/answer_a_label"
         app:layout_constraintRight_toLeftOf="@+id/answer_a_checkbox"
-        tools:text="love that is a sweet sweet"/>
+        app:layout_constraintTop_toTopOf="@id/answer_a_label"
+        tools:text="love that is a sweet sweet" />
+
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/answer_a_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="@+id/answer_a_value"
         app:layout_constraintBottom_toBottomOf="@id/answer_a_value"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/answer_a_value" />
+
     <TextView
         android:id="@+id/answer_b_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/answer_a_value"
+        android:text="b)"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="b)"/>
+        app:layout_constraintTop_toBottomOf="@id/answer_a_value" />
+
     <TextView
         android:id="@+id/answer_b_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="@id/answer_b_label"
         app:layout_constraintLeft_toRightOf="@id/answer_b_label"
         app:layout_constraintRight_toLeftOf="@+id/answer_b_checkbox"
-        tools:text="true love is love that never dies"/>
+        app:layout_constraintTop_toTopOf="@id/answer_b_label"
+        tools:text="true love is love that never dies" />
+
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/answer_b_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="@+id/answer_b_value"
         app:layout_constraintBottom_toBottomOf="@id/answer_b_value"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/answer_b_value" />
+
     <TextView
         android:id="@+id/answer_c_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/answer_b_value"
+        android:text="c)"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="c)"/>
+        app:layout_constraintTop_toBottomOf="@id/answer_b_value" />
+
     <TextView
         android:id="@+id/answer_c_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="@id/answer_c_label"
         app:layout_constraintLeft_toRightOf="@id/answer_c_label"
         app:layout_constraintRight_toLeftOf="@+id/answer_c_checkbox"
-        tools:text="true love is love that does not exist"/>
+        app:layout_constraintTop_toTopOf="@id/answer_c_label"
+        tools:text="true love is love that does not exist" />
+
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/answer_c_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="@+id/answer_c_value"
         app:layout_constraintBottom_toBottomOf="@id/answer_c_value"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/answer_c_value" />
+
     <TextView
         android:id="@+id/answer_d_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/answer_c_value"
+        android:text="d)"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="d)"/>
+        app:layout_constraintTop_toBottomOf="@id/answer_c_value" />
+
     <TextView
         android:id="@+id/answer_d_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="@id/answer_d_label"
         app:layout_constraintLeft_toRightOf="@id/answer_d_label"
         app:layout_constraintRight_toLeftOf="@+id/answer_d_checkbox"
-        tools:text="love of a mother"/>
+        app:layout_constraintTop_toTopOf="@id/answer_d_label"
+        tools:text="love of a mother" />
+
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/answer_d_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        app:layout_constraintTop_toTopOf="@+id/answer_d_value"
         app:layout_constraintBottom_toBottomOf="@id/answer_d_value"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/answer_d_value" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

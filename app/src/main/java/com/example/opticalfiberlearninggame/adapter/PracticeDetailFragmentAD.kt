@@ -37,6 +37,9 @@ class PracticeDetailFragmentAD() : RecyclerView.Adapter<PracticeDetailFragmentAD
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        if (position%2 == 0) holder.itemView.background = null
+
         holder.questionNumberTv.text = (position+1).toString()
         val questionAndAnswers = questionAndAnswersList.get(position)
         holder.questionTv.text = questionAndAnswers.question.question

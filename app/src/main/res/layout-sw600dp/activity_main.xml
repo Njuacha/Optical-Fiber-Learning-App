@@ -30,12 +30,29 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
-                android:layout_weight="3"/>
+                android:layout_weight="3">
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_text_1"
+                    android:icon="@drawable/theory_icon"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tab_text_2"
+                    android:icon="@drawable/practice_icon"/>
+            </com.google.android.material.tabs.TabLayout>
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                tools:text="Topic currently selected"
-                android:layout_weight="7"/>
+                android:layout_margin="10dp"
+                android:layout_weight="7"
+                android:gravity="bottom|center"
+                android:textColor="@android:color/white"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                tools:text="Topic currently selected" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </com.google.android.material.appbar.AppBarLayout>

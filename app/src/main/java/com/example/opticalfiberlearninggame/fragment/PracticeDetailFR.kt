@@ -12,13 +12,11 @@ import android.widget.CheckBox
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.app.BundleCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.opticalfiberlearninggame.R
 import com.example.opticalfiberlearninggame.model.QuestionWithAnswers
 import com.example.opticalfiberlearninggame.view_model.PracticeDetailFragmentVM
-import kotlin.concurrent.fixedRateTimer
 
 class PracticeDetailFR : Fragment() {
 
@@ -41,14 +39,17 @@ class PracticeDetailFR : Fragment() {
     private var isAnswerDCorrectAns = false
     private var currentQuestionIndex = 0
     private var numberOfQuestions = 0
-    var numCorrectAnswersGiven = 0
-
+    private var numCorrectAnswersGiven = 0
     private var failedPreviousQuestion = false;
+    private val currentQuestionIndexExtra = "current question index"
+    private val numCorrectAnswersGivenExtra = "number of correct answers given"
+    private val failedPrevQuestionExtra = "failed previous question or not"
+
 
     companion object {
-        val USER_SCORE = "user score"
-        val TOTAL_SCORE = "total score"
-        val USER_MESSAGE = "user message"
+        const val USER_SCORE = "user score"
+        const val TOTAL_SCORE = "total score"
+        const val USER_MESSAGE = "user message"
     }
 
     override fun onCreateView(
@@ -71,9 +72,24 @@ class PracticeDetailFR : Fragment() {
         answerDch = view.findViewById(R.id.answer_d_checkbox)
         progressBar = view.findViewById(R.id.progressBar)
 
+        if (savedInstanceState != null) {
+            currentQuestionIndex = savedInstanceState.getInt(currentQuestionIndexExtra)
+            numCorrectAnswersGiven = savedInstanceState.getInt(numCorrectAnswersGivenExtra)
+            failedPreviousQuestion = savedInstanceState.getBoolean(failedPrevQuestionExtra)
+        }
+
         setUpViewModel(view)
 
         return view
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.apply {
+            putInt(numCorrectAnswersGivenExtra, numCorrectAnswersGiven)
+            putInt(currentQuestionIndexExtra, currentQuestionIndex)
+            putBoolean(failedPrevQuestionExtra, failedPreviousQuestion)
+        }
+        super.onSaveInstanceState(outState)
     }
 
     private fun setUpViewModel(view: View) {
@@ -81,7 +97,7 @@ class PracticeDetailFR : Fragment() {
         val viewModel: PracticeDetailFragmentVM by activityViewModels()
 
         viewModel.questionWithAnswers.observe(viewLifecycleOwner ) { list ->
-            setUpQuestion(list[0])
+            setUpQuestion(list[currentQuestionIndex])
             numberOfQuestions = list.size
             progressBar?.max = numberOfQuestions
         }

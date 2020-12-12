@@ -12,11 +12,13 @@ import android.widget.CheckBox
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.app.BundleCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.opticalfiberlearninggame.R
 import com.example.opticalfiberlearninggame.model.QuestionWithAnswers
 import com.example.opticalfiberlearninggame.view_model.PracticeDetailFragmentVM
+import kotlin.concurrent.fixedRateTimer
 
 class PracticeDetailFR : Fragment() {
 
@@ -39,10 +41,15 @@ class PracticeDetailFR : Fragment() {
     private var isAnswerDCorrectAns = false
     private var currentQuestionIndex = 0
     private var numberOfQuestions = 0
+    var numCorrectAnswersGiven = 0
 
     private var failedPreviousQuestion = false;
 
-
+    companion object {
+        val USER_SCORE = "user score"
+        val TOTAL_SCORE = "total score"
+        val USER_MESSAGE = "user message"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -103,17 +110,42 @@ class PracticeDetailFR : Fragment() {
 
                     } else  {
                         failedPreviousQuestion = false
+                        numCorrectAnswersGiven += 1
+
                     }
 
                     view.findViewById<AppCompatImageView>(R.id.img_marking).visibility = View.VISIBLE
 
 
-
                     if (currentQuestionIndex == numberOfQuestions-1) {
+                        // show score dialog
+                        val scoreResultsDialogFR = ScoreResultsDialogFR()
+                        val bundle = Bundle()
+                        bundle.putString(USER_SCORE, numCorrectAnswersGiven.toString())
+                        bundle.putString(TOTAL_SCORE, numberOfQuestions.toString())
+
+                        var scoreFraction = numCorrectAnswersGiven.toDouble() / numberOfQuestions
+                        var message = ""
+                        if (scoreFraction < 0.5) {
+                            message = "Not Good !"
+                        } else if (scoreFraction == 0.5) {
+                            message = "Can do better !"
+                        } else {
+                            message = "Good Job !"
+                        }
+
+                        bundle.putString(USER_MESSAGE, message)
+
+                        scoreResultsDialogFR.arguments = bundle
+                        scoreResultsDialogFR.show(childFragmentManager, "scoreDialog")
+
                         submitBtn.text = "close"
                     } else {
                         submitBtn.text = "next"
                     }
+
+                    // update progress
+                    progressBar?.incrementProgressBy(1)
 
                 }
                 "next" -> {
@@ -122,10 +154,11 @@ class PracticeDetailFR : Fragment() {
                         answerBtv?.setTextColor(Color.GRAY)
                         answerCtv?.setTextColor(Color.GRAY)
                         answerDtv?.setTextColor(Color.GRAY)
+                        // setting back the default icon
+                        view.findViewById<AppCompatImageView>(R.id.img_marking).setImageResource(R.drawable.check_outline)
                     }
 
                     currentQuestionIndex += 1
-                    progressBar?.incrementProgressBy(1)
 
                     view.findViewById<AppCompatImageView>(R.id.img_marking).visibility = View.GONE
                     viewModel.questionWithAnswers.value?.get(currentQuestionIndex)?.let(this::setUpQuestion)

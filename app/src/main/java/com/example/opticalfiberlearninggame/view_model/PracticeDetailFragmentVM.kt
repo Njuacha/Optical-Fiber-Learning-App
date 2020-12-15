@@ -7,7 +7,16 @@ import com.example.opticalfiberlearninggame.Repository
 import com.example.opticalfiberlearninggame.model.QuestionWithAnswers
 
 class PracticeDetailFragmentVM(application: Application) : AndroidViewModel(application) {
+    var topicId: Int = 0
+    set(value) {
+        field = value
 
-    val questionWithAnswers = Repository.getQuestionsWithAnswers(application.applicationContext)
+        questionWithAnswers = Repository.getQuestionsWithAnswers(value, this.getApplication())
+    }
+
+    var questionWithAnswers: LiveData<List<QuestionWithAnswers>>? = null
+
+
+
 
 }

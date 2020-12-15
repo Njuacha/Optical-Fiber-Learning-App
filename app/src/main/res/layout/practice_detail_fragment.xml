@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -35,6 +36,7 @@
                 android:padding="16dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:textSize="16sp"
                 tools:text="1." />
 
             <TextView
@@ -42,10 +44,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:textColor="@android:color/black"
+                android:textColor="@color/colorPrimary"
                 app:layout_constraintLeft_toRightOf="@id/question_no"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/question_no"
+                android:textSize="16sp"
                 tools:text="What is the meaning of true love? like try to think really deeply about this matter very well" />
 
             <TextView
@@ -65,6 +68,7 @@
                 app:layout_constraintLeft_toRightOf="@id/answer_a_label"
                 app:layout_constraintRight_toLeftOf="@+id/answer_a_checkbox"
                 app:layout_constraintTop_toTopOf="@id/answer_a_label"
+                android:textSize="16sp"
                 tools:text="love that is a sweet sweet" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
@@ -94,6 +98,7 @@
                 app:layout_constraintLeft_toRightOf="@id/answer_b_label"
                 app:layout_constraintRight_toLeftOf="@+id/answer_b_checkbox"
                 app:layout_constraintTop_toTopOf="@id/answer_b_label"
+                android:textSize="16sp"
                 tools:text="true love is love that never dies" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
@@ -123,6 +128,7 @@
                 app:layout_constraintLeft_toRightOf="@id/answer_c_label"
                 app:layout_constraintRight_toLeftOf="@+id/answer_c_checkbox"
                 app:layout_constraintTop_toTopOf="@id/answer_c_label"
+                android:textSize="16sp"
                 tools:text="true love is love that does not exist" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
@@ -152,6 +158,7 @@
                 app:layout_constraintLeft_toRightOf="@id/answer_d_label"
                 app:layout_constraintRight_toLeftOf="@+id/answer_d_checkbox"
                 app:layout_constraintTop_toTopOf="@id/answer_d_label"
+                android:textSize="16sp"
                 tools:text="love of a mother who really loves like God" />
 
             <com.google.android.material.checkbox.MaterialCheckBox
@@ -189,6 +196,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:backgroundTint="@color/colorAccent"
+        android:textColor="@android:color/white"
         android:text="check"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

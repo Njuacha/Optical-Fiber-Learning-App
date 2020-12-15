@@ -13,8 +13,8 @@ interface QuestionDao {
     fun insertQuestions(questions: List<Question>)
 
     @Transaction
-    @Query("Select * From Question")
-    fun getQuestionsWithAnswers(): LiveData<List<QuestionWithAnswers>>
+    @Query("Select * From Question where tid = :topicId")
+    fun getQuestionsWithAnswers(topicId: Int): LiveData<List<QuestionWithAnswers>>
 
     @Query("Delete from Question")
     fun deleteAll()

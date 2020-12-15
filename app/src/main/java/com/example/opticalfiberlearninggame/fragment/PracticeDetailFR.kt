@@ -7,14 +7,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.opticalfiberlearninggame.R
+import com.example.opticalfiberlearninggame.activity.MainActivity.Companion.TOPIC_ID
 import com.example.opticalfiberlearninggame.model.QuestionWithAnswers
 import com.example.opticalfiberlearninggame.view_model.PracticeDetailFragmentVM
 
@@ -96,10 +94,17 @@ class PracticeDetailFR : Fragment() {
 
         val viewModel: PracticeDetailFragmentVM by activityViewModels()
 
-        viewModel.questionWithAnswers.observe(viewLifecycleOwner ) { list ->
-            setUpQuestion(list[currentQuestionIndex])
-            numberOfQuestions = list.size
-            progressBar?.max = numberOfQuestions
+        var topicId = requireArguments().getInt(TOPIC_ID)
+        viewModel.topicId = topicId
+
+        viewModel.questionWithAnswers?.observe(viewLifecycleOwner ) { list ->
+            if (list.isNotEmpty()) {
+                setUpQuestion(list[currentQuestionIndex])
+                numberOfQuestions = list.size
+                progressBar?.max = numberOfQuestions
+            } else {
+                Toast.makeText(context, "Questions have not yet been implemented here !", Toast.LENGTH_LONG).show()
+            }
         }
 
         val submitBtn = view.findViewById<Button>(R.id.btn_submit)
@@ -115,12 +120,12 @@ class PracticeDetailFR : Fragment() {
                         failedPreviousQuestion = true
 
                         // show correct answer
-                        val answers = viewModel.questionWithAnswers.value?.get(currentQuestionIndex)?.answers
+                        val answers = viewModel.questionWithAnswers?.value?.get(currentQuestionIndex)?.answers
                         if (answers != null) {
-                            if (answers[0].isCorrectAnswer) answerAtv?.setTextColor(Color.RED)
-                            if (answers[1].isCorrectAnswer) answerBtv?.setTextColor(Color.RED)
-                            if (answers[2].isCorrectAnswer) answerCtv?.setTextColor(Color.RED)
-                            if (answers[3].isCorrectAnswer) answerDtv?.setTextColor(Color.RED)
+                            if (answers[0].isCorrectAnswer) answerAtv?.setTextColor(Color.GREEN)
+                            if (answers[1].isCorrectAnswer) answerBtv?.setTextColor(Color.GREEN)
+                            if (answers[2].isCorrectAnswer) answerCtv?.setTextColor(Color.GREEN)
+                            if (answers[3].isCorrectAnswer) answerDtv?.setTextColor(Color.GREEN)
                         }
 
 
@@ -166,10 +171,10 @@ class PracticeDetailFR : Fragment() {
                 }
                 "next" -> {
                     if (failedPreviousQuestion) {
-                        answerAtv?.setTextColor(Color.GRAY)
-                        answerBtv?.setTextColor(Color.GRAY)
-                        answerCtv?.setTextColor(Color.GRAY)
-                        answerDtv?.setTextColor(Color.GRAY)
+                        answerAtv?.setTextColor(Color.DKGRAY)
+                        answerBtv?.setTextColor(Color.DKGRAY)
+                        answerCtv?.setTextColor(Color.DKGRAY)
+                        answerDtv?.setTextColor(Color.DKGRAY)
                         // setting back the default icon
                         view.findViewById<AppCompatImageView>(R.id.img_marking).setImageResource(R.drawable.check_outline)
                     }
@@ -177,7 +182,7 @@ class PracticeDetailFR : Fragment() {
                     currentQuestionIndex += 1
 
                     view.findViewById<AppCompatImageView>(R.id.img_marking).visibility = View.GONE
-                    viewModel.questionWithAnswers.value?.get(currentQuestionIndex)?.let(this::setUpQuestion)
+                    viewModel.questionWithAnswers?.value?.get(currentQuestionIndex)?.let(this::setUpQuestion)
                     submitBtn.text = "check"
 
                 }

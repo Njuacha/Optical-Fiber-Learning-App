@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.commit
 import androidx.viewpager.widget.ViewPager
 import com.example.opticalfiberlearninggame.R
@@ -21,7 +20,6 @@ class MainActivity : AppCompatActivity(), PracticeFR.PracticeFragmentListener, T
 
     companion object {
         const val DETAIL_MODE = "mode"
-        const val CONTENT_PATH = "path"
         const val TOPIC_ID = "tid"
     }
 

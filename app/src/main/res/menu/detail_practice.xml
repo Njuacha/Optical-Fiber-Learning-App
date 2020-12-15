@@ -4,6 +4,6 @@
     <item
         android:id="@+id/practice_menu_icon"
         android:title="Practice"
-        android:icon="@drawable/practice_icon"
+        android:icon="@drawable/account_hard_hat"
         app:showAsAction="ifRoom"/>
 </menu>

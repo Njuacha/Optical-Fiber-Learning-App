@@ -15,8 +15,8 @@ class Repository {
             AppDatabase.getDatabase(context).questionDao().insert(question)
         }
 
-        fun getQuestionsWithAnswers(context: Context) : LiveData<List<QuestionWithAnswers>> {
-            return AppDatabase.getDatabase(context).questionDao().getQuestionsWithAnswers()
+        fun getQuestionsWithAnswers(topicId: Int, context: Context) : LiveData<List<QuestionWithAnswers>> {
+            return AppDatabase.getDatabase(context).questionDao().getQuestionsWithAnswers(topicId)
         }
 
         fun getTopics(context: Context) : LiveData<List<Topic>> {

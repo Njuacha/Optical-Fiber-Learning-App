@@ -2,4 +2,12 @@
     <string name="app_name">Optical Fiber</string>
     <string name="tab_text_1">Theory</string>
     <string name="tab_text_2">Practice</string>
+    <string name="check">check</string>
+    <string name="your_score">Your Score</string>
+    <string name="ok">OK</string>
+    <string name="bad_score_msg">Not Good !</string>
+    <string name="avg_score_msg">Can do better !</string>
+    <string name="good_score_msg">Good Job !</string>
+    <string name="close">close</string>
+    <string name="next">next</string>
 </resources>

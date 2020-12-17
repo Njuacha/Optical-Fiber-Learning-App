@@ -148,11 +148,11 @@ class PracticeDetailFR : Fragment() {
                         var scoreFraction = numCorrectAnswersGiven.toDouble() / numberOfQuestions
                         var message = ""
                         if (scoreFraction < 0.5) {
-                            message = "Not Good !"
+                            message = getString(R.string.bad_score_msg)
                         } else if (scoreFraction == 0.5) {
-                            message = "Can do better !"
+                            message = getString(R.string.avg_score_msg)
                         } else {
-                            message = "Good Job !"
+                            message = getString(R.string.good_score_msg)
                         }
 
                         bundle.putString(USER_MESSAGE, message)
@@ -160,9 +160,9 @@ class PracticeDetailFR : Fragment() {
                         scoreResultsDialogFR.arguments = bundle
                         scoreResultsDialogFR.show(childFragmentManager, "scoreDialog")
 
-                        submitBtn.text = "close"
+                        submitBtn.text = getString(R.string.close)
                     } else {
-                        submitBtn.text = "next"
+                        submitBtn.text = getString(R.string.next)
                     }
 
                     // update progress
@@ -183,7 +183,7 @@ class PracticeDetailFR : Fragment() {
 
                     view.findViewById<AppCompatImageView>(R.id.img_marking).visibility = View.GONE
                     viewModel.questionWithAnswers?.value?.get(currentQuestionIndex)?.let(this::setUpQuestion)
-                    submitBtn.text = "check"
+                    submitBtn.text = getString(R.string.check)
 
                 }
                 else -> {

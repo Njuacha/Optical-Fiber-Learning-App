@@ -37,11 +37,11 @@ class DetailActivity : AppCompatActivity() {
         when (mDetailMode) {
             THEORY_MODE -> {
                 frag = TheoryDetailFR()
-                title = "Theory"
+                title = getString(R.string.tab_text_1)
             }
             PRACTICE_MODE -> {
                 frag = PracticeDetailFR()
-                title = "Practice"
+                title = getString(R.string.tab_text_2)
             }
         }
 

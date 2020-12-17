@@ -16,7 +16,7 @@ import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity(), PracticeFR.PracticeFragmentListener, TheoryFR.TheoryFragmentListener {
 
-    var tabletMode: Boolean = false
+    private var tabletMode: Boolean = false
 
     companion object {
         const val DETAIL_MODE = "mode"

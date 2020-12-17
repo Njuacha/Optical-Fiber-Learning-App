@@ -31,9 +31,9 @@ class ScoreResultsDialogFR: DialogFragment() {
             view.findViewById<TextView>(R.id.total_score).text = totalScore
             view.findViewById<TextView>(R.id.user_message).text = userMessage
 
-            builder.setTitle("Your Score")
+            builder.setTitle(getString(R.string.your_score))
                 .setView(view)
-                .setPositiveButton("OK", null)
+                .setPositiveButton(getString(R.string.ok), null)
 
             builder.create()
         }?: throw IllegalStateException("Activity cannot be null")

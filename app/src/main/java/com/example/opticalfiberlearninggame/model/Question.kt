@@ -9,6 +9,7 @@ import androidx.room.PrimaryKey
 data class Question (
     @PrimaryKey(autoGenerate = true) val qid: Int,
     val tid: Int,
-    val question: String?
+    val question: String?,
+    val pictureUrl: String?
 )
 

@@ -2,19 +2,25 @@ package com.example.opticalfiberlearninggame.fragment
 
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.bumptech.glide.Glide
 import com.example.opticalfiberlearninggame.R
 import com.example.opticalfiberlearninggame.activity.MainActivity.Companion.TOPIC_ID
 import com.example.opticalfiberlearninggame.model.QuestionWithAnswers
 import com.example.opticalfiberlearninggame.view_model.PracticeDetailFragmentVM
+import java.io.IOException
+import java.io.InputStream
 
 class PracticeDetailFR : Fragment() {
 
@@ -28,6 +34,7 @@ class PracticeDetailFR : Fragment() {
     private var answerBch: CheckBox? = null
     private var answerCch: CheckBox? = null
     private var answerDch: CheckBox? = null
+    private var questionImageIv: AppCompatImageView? = null
 
     private var progressBar: ProgressBar? = null
 
@@ -69,6 +76,7 @@ class PracticeDetailFR : Fragment() {
         answerCch = view.findViewById(R.id.answer_c_checkbox)
         answerDch = view.findViewById(R.id.answer_d_checkbox)
         progressBar = view.findViewById(R.id.progressBar)
+        questionImageIv = view.findViewById(R.id.question_image)
 
         if (savedInstanceState != null) {
             currentQuestionIndex = savedInstanceState.getInt(currentQuestionIndexExtra)
@@ -122,10 +130,10 @@ class PracticeDetailFR : Fragment() {
                         // show correct answer
                         val answers = viewModel.questionWithAnswers?.value?.get(currentQuestionIndex)?.answers
                         if (answers != null) {
-                            if (answers[0].isCorrectAnswer) answerAtv?.setTextColor(Color.GREEN)
-                            if (answers[1].isCorrectAnswer) answerBtv?.setTextColor(Color.GREEN)
-                            if (answers[2].isCorrectAnswer) answerCtv?.setTextColor(Color.GREEN)
-                            if (answers[3].isCorrectAnswer) answerDtv?.setTextColor(Color.GREEN)
+                            if (answers[0].isCorrectAnswer) answerAtv?.setTextColor(Color.RED)
+                            if (answers[1].isCorrectAnswer) answerBtv?.setTextColor(Color.RED)
+                            if (answers[2].isCorrectAnswer) answerCtv?.setTextColor(Color.RED)
+                            if (answers[3].isCorrectAnswer) answerDtv?.setTextColor(Color.RED)
                         }
 
 
@@ -135,7 +143,7 @@ class PracticeDetailFR : Fragment() {
 
                     }
 
-                    view.findViewById<AppCompatImageView>(R.id.img_marking).visibility = View.VISIBLE
+                    view.findViewById<AppCompatImageView>(R.id.img_marking).visibility = VISIBLE
 
 
                     if (currentQuestionIndex == numberOfQuestions-1) {
@@ -214,6 +222,19 @@ class PracticeDetailFR : Fragment() {
         isAnswerBCorrectAns = answers[1].isCorrectAnswer
         isAnswerCCorrectAns = answers[2].isCorrectAnswer
         isAnswerDCorrectAns = answers[3].isCorrectAnswer
+
+        // load and show picture of question if it has one
+        if (!TextUtils.isEmpty(questionWithAnswers.question.pictureUrl)) {
+
+            questionImageIv?.let {
+                it.visibility = VISIBLE
+                Glide.with(this).load("file:///android_asset/images/fig1.jpg").into(it)
+
+            }
+
+        } else {
+            questionImageIv?.visibility = View.GONE
+        }
 
     }
 }

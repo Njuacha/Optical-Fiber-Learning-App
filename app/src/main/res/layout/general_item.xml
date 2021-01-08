@@ -15,7 +15,7 @@
         android:textAlignment="center"
         android:padding="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@android:color/primary_text_light"
+        android:textColor="?attr/colorAccent"
         tool:text="Optics"
         android:layout_gravity="center_horizontal" />
 </androidx.cardview.widget.CardView>

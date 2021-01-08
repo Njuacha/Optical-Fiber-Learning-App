@@ -6,13 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
-import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import com.example.opticalfiberlearninggame.R
 import com.example.opticalfiberlearninggame.activity.MainActivity.Companion.TOPIC_ID
-import kotlinx.android.synthetic.main.theory_detail.*
-import java.lang.ClassCastException
-import kotlin.concurrent.thread
+
 
 class TheoryDetailFR: Fragment(){
 

@@ -10,9 +10,11 @@ import androidx.viewpager.widget.ViewPager
 import com.example.opticalfiberlearninggame.R
 import com.example.opticalfiberlearninggame.adapter.SectionsPagerAD
 import com.example.opticalfiberlearninggame.fragment.PracticeFR
+import com.example.opticalfiberlearninggame.fragment.TheoryDetailFR
 import com.example.opticalfiberlearninggame.fragment.TheoryFR
 import com.example.opticalfiberlearninggame.view_model.TopicVM
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), PracticeFR.PracticeFragmentListener, TheoryFR.TheoryFragmentListener {
 
@@ -47,8 +49,14 @@ class MainActivity : AppCompatActivity(), PracticeFR.PracticeFragmentListener, T
         if (savedInstanceState == null && tabletMode) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add(R.id.detail_container, TheoryFR())
+                val bundle = Bundle()
+                bundle.putInt(TOPIC_ID, 1)
+                val theoryDetailFR = TheoryDetailFR()
+                theoryDetailFR.arguments = bundle
+                add(R.id.detail_container, theoryDetailFR)
             }
+
+            tv_topic.text = "Hello my people"
         }
 
 

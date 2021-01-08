@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <LinearLayout
-        android:id="@+id/score_cirle"
+        android:id="@+id/score_circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -20,18 +20,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="9"
+            android:textColor="@android:color/primary_text_light"
             android:textSize="24sp"
             android:layout_marginBottom="8dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="/"
+            android:textColor="@android:color/primary_text_light"
             android:textSize="28sp"/>
         <TextView
             android:id="@+id/total_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="10"
+            android:textColor="@android:color/primary_text_light"
             android:textSize="24sp"
             android:layout_marginTop="8dp"/>
     </LinearLayout>
@@ -40,9 +43,10 @@
         android:id="@+id/user_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/score_cirle"
+        app:layout_constraintTop_toBottomOf="@+id/score_circle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Good Job !"
+        android:textColor="@android:color/primary_text_light"
         android:layout_marginTop="@dimen/activity_vertical_margin"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

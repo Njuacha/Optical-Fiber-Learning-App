@@ -3,6 +3,7 @@ package com.example.opticalfiberlearninggame.fragment
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -19,8 +20,9 @@ import com.example.opticalfiberlearninggame.R
 import com.example.opticalfiberlearninggame.activity.MainActivity.Companion.TOPIC_ID
 import com.example.opticalfiberlearninggame.model.QuestionWithAnswers
 import com.example.opticalfiberlearninggame.view_model.PracticeDetailFragmentVM
+import java.io.File
+import java.io.FileNotFoundException
 import java.io.IOException
-import java.io.InputStream
 
 class PracticeDetailFR : Fragment() {
 
@@ -223,13 +225,13 @@ class PracticeDetailFR : Fragment() {
         isAnswerCCorrectAns = answers[2].isCorrectAnswer
         isAnswerDCorrectAns = answers[3].isCorrectAnswer
 
-        // load and show picture of question if it has one
-        if (!TextUtils.isEmpty(questionWithAnswers.question.pictureUrl)) {
 
+        // load and show picture of question if it has one
+        val pictureUrl = questionWithAnswers.question.pictureUrl
+        if (!TextUtils.isEmpty(pictureUrl)) {
             questionImageIv?.let {
                 it.visibility = VISIBLE
-                Glide.with(this).load("file:///android_asset/images/fig1.jpg").into(it)
-
+                Glide.with(this).load(Uri.parse(pictureUrl)).into(it)
             }
 
         } else {

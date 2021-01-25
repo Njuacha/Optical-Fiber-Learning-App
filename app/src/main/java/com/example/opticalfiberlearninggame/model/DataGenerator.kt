@@ -26,8 +26,8 @@ class DataGenerator {
                 Question(17,3, "In which types of application LED is used as light sources? ",null),
                 Question(18,3, "Laser diodes are used as light sources for:",null),
                 Question(19,3, "Laser diodes are used as light sources for: ",null),
-                Question(20,3, "LEDs emit light:",null),
-                Question(21,3, "Some advantages of LEDs:",null),
+                Question(20,3, "Some advantages of LEDs:",null),
+                Question(21,3, "LEDs emit light:",null),
                 Question(22,3, "Some advantages of using laser diodes:",null),
                 Question(23,3, "Laser diodes emit light:",null),
                 Question(24,3, "What is called “lasing”?",null),
@@ -390,7 +390,7 @@ class DataGenerator {
                 Answer(231, 58, false, "Optical splice."),
                 Answer(232, 58, false, "Connector."),
 
-                Answer(223, 59, true, "Single mode."),
+                Answer(233, 59, true, "Single mode."),
                 Answer(234, 59, false, "Multimode."),
                 Answer(235, 59, false, "Single mode and multimode."),
                 Answer(236, 59, false, "Optical mode."),
@@ -420,7 +420,7 @@ class DataGenerator {
                 Answer(255, 64, false, "1 degree or less."),
                 Answer(256, 64, true, "0.5 degree or less."),
 
-                Answer(247, 65, true, "Alignment and heating."),
+                Answer(257, 65, true, "Alignment and heating."),
                 Answer(258, 65, false, "Cutting and heating."),
                 Answer(259, 65, false, "Alignment and shaping."),
                 Answer(260, 65, false, "Bending and heating."),
@@ -479,7 +479,6 @@ class DataGenerator {
                 Answer(302, 76, false, "Subtraction."),
                 Answer(303, 76, false, "Division."),
                 Answer(304, 76, true, "Average.")
-
 
                 )
         }

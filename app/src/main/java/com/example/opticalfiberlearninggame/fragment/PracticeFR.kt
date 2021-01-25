@@ -54,6 +54,6 @@ class PracticeFR : Fragment()  {
     }
 
     interface PracticeFragmentListener {
-        fun onPracticeItemClicked(topicId : Int)
+        fun onPracticeItemClicked(topicId : Int, topicTitle : String)
     }
 }

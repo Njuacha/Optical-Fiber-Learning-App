@@ -9,6 +9,7 @@ import androidx.fragment.app.commit
 import com.example.opticalfiberlearninggame.R
 import com.example.opticalfiberlearninggame.activity.MainActivity.Companion.DETAIL_MODE
 import com.example.opticalfiberlearninggame.activity.MainActivity.Companion.TOPIC_ID
+import com.example.opticalfiberlearninggame.activity.MainActivity.Companion.TOPIC_TITLE
 import com.example.opticalfiberlearninggame.fragment.PracticeDetailFR
 import com.example.opticalfiberlearninggame.fragment.TheoryDetailFR
 
@@ -16,6 +17,7 @@ class DetailActivity : AppCompatActivity() {
 
     private var mDetailMode = 1
     private var mTopicId = 1
+    private var mTopicTitle = ""
     private val THEORY_MODE = 1
     private val PRACTICE_MODE = 2
 
@@ -29,19 +31,21 @@ class DetailActivity : AppCompatActivity() {
 
         mDetailMode = intent.getIntExtra(DETAIL_MODE, 1)
         mTopicId = intent.getIntExtra(TOPIC_ID, 1)
+        mTopicTitle = intent.getStringExtra(TOPIC_TITLE)
 
         val bundle = Bundle()
         lateinit var frag : Fragment
         bundle.putInt(TOPIC_ID, mTopicId)
+        bundle.putString(TOPIC_TITLE, mTopicTitle)
 
         when (mDetailMode) {
             THEORY_MODE -> {
                 frag = TheoryDetailFR()
-                title = getString(R.string.tab_text_1)
+                title = getString(R.string.tab_text_1).plus("-").plus(mTopicTitle)
             }
             PRACTICE_MODE -> {
                 frag = PracticeDetailFR()
-                title = getString(R.string.tab_text_2)
+                title = getString(R.string.tab_text_2).plus("-").plus(mTopicTitle)
             }
         }
 
@@ -68,20 +72,18 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        val bundle = Bundle()
-        bundle.putInt(TOPIC_ID, mTopicId)
-        lateinit var frag : Fragment
-
         when(item.itemId) {
             R.id.practice_menu_icon -> {
                 intent.putExtra(DETAIL_MODE, PRACTICE_MODE)
                 intent.putExtra(TOPIC_ID, mTopicId)
+                intent.putExtra(TOPIC_TITLE, mTopicTitle)
                 finish()
                 startActivity(intent)
             }
             R.id.theory_menu_icon -> {
                 intent.putExtra(DETAIL_MODE, THEORY_MODE)
                 intent.putExtra(TOPIC_ID, mTopicId)
+                intent.putExtra(TOPIC_TITLE, mTopicTitle)
                 finish()
                 startActivity(intent)
             }

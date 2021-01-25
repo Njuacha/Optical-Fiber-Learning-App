@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity(), PracticeFR.PracticeFragmentListener, T
     companion object {
         const val DETAIL_MODE = "mode"
         const val TOPIC_ID = "tid"
+        const val TOPIC_TITLE = "topic title"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,24 +64,26 @@ class MainActivity : AppCompatActivity(), PracticeFR.PracticeFragmentListener, T
     }
 
 
-    override fun onTheoryItemClicked(topicId: Int) {
+    override fun onTheoryItemClicked(topicId: Int, topicTitle : String) {
         if (tabletMode) {
 
         } else {
             startActivity(Intent(this , DetailActivity::class.java).apply {
                 putExtra(DETAIL_MODE, 1)
                 putExtra(TOPIC_ID, topicId)
+                putExtra(TOPIC_TITLE, topicTitle)
             } )
         }
     }
 
-    override fun onPracticeItemClicked(topicId: Int) {
+    override fun onPracticeItemClicked(topicId: Int, topicTitle : String) {
         if (tabletMode) {
 
         } else {
             startActivity(Intent(this , DetailActivity::class.java).apply {
                 putExtra(DETAIL_MODE, 2)
                 putExtra(TOPIC_ID, topicId)
+                putExtra(TOPIC_TITLE, topicTitle)
             } )
         }
     }

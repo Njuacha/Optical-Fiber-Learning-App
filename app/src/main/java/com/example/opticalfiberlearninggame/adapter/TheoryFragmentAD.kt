@@ -25,7 +25,8 @@ class TheoryFragmentAD(val listener: TheoryFR.TheoryFragmentListener?) : Recycle
         }
 
         override fun onClick(v: View?) {
-            listener?.onTheoryItemClicked(topics.get(adapterPosition).tid)
+            val  topic = topics[adapterPosition]
+            listener?.onTheoryItemClicked(topic.tid, topic.title)
         }
     }
 

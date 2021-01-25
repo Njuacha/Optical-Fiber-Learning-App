@@ -25,7 +25,8 @@ class PracticeFragmentAD(val listener: PracticeFR.PracticeFragmentListener?) : R
         }
 
         override fun onClick(v: View?) {
-            listener?.onPracticeItemClicked(topics.get(adapterPosition).tid)
+            val topic = topics[adapterPosition]
+            listener?.onPracticeItemClicked(topic.tid, topic.title)
         }
 
 

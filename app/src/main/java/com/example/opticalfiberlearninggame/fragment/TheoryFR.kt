@@ -53,6 +53,6 @@ class TheoryFR : Fragment() {
     }
 
     interface TheoryFragmentListener {
-        fun onTheoryItemClicked(tid : Int)
+        fun onTheoryItemClicked(tid : Int, topicTitle: String)
     }
 }

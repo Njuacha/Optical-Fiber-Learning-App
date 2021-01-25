@@ -1,8 +1,7 @@
 package com.example.opticalfiberlearninggame.fragment
 
-import android.content.res.ColorStateList
+
 import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
@@ -20,9 +19,6 @@ import com.example.opticalfiberlearninggame.R
 import com.example.opticalfiberlearninggame.activity.MainActivity.Companion.TOPIC_ID
 import com.example.opticalfiberlearninggame.model.QuestionWithAnswers
 import com.example.opticalfiberlearninggame.view_model.PracticeDetailFragmentVM
-import java.io.File
-import java.io.FileNotFoundException
-import java.io.IOException
 
 class PracticeDetailFR : Fragment() {
 
@@ -65,7 +61,6 @@ class PracticeDetailFR : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.practice_detail_fragment, container, false)
-        Log.d("topicId", arguments?.getInt("topicId", 0).toString())
 
         questionNoTv = view.findViewById(R.id.question_no)
         questionTv = view.findViewById(R.id.question)

@@ -16,7 +16,4 @@ class PracticeDetailFragmentVM(application: Application) : AndroidViewModel(appl
 
     var questionWithAnswers: LiveData<List<QuestionWithAnswers>>? = null
 
-
-
-
 }

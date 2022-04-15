@@ -15,6 +15,7 @@ import com.example.opticalfiberlearninggame.fragment.TheoryFR
 import com.example.opticalfiberlearninggame.view_model.TopicVM
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity(), PracticeFR.PracticeFragmentListener, TheoryFR.TheoryFragmentListener {
 
@@ -68,11 +69,12 @@ class MainActivity : AppCompatActivity(), PracticeFR.PracticeFragmentListener, T
         if (tabletMode) {
 
         } else {
-            startActivity(Intent(this , DetailActivity::class.java).apply {
+/*            startActivity(Intent(this , DetailActivity::class.java).apply {
                 putExtra(DETAIL_MODE, 1)
                 putExtra(TOPIC_ID, topicId)
                 putExtra(TOPIC_TITLE, topicTitle)
-            } )
+            } )*/
+            startActivity<DetailActivity>(DETAIL_MODE to 1, TOPIC_ID to topicId, TOPIC_TITLE to topicTitle)
         }
     }
 
@@ -80,11 +82,12 @@ class MainActivity : AppCompatActivity(), PracticeFR.PracticeFragmentListener, T
         if (tabletMode) {
 
         } else {
-            startActivity(Intent(this , DetailActivity::class.java).apply {
+/*            startActivity(Intent(this , DetailActivity::class.java).apply {
                 putExtra(DETAIL_MODE, 2)
                 putExtra(TOPIC_ID, topicId)
                 putExtra(TOPIC_TITLE, topicTitle)
-            } )
+            } )*/
+            startActivity<DetailActivity>(DETAIL_MODE to 2, TOPIC_ID to topicId, TOPIC_TITLE to topicTitle)
         }
     }
 
